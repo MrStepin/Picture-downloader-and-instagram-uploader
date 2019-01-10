@@ -1,6 +1,6 @@
 # Space Instagram
 
-These scripts download pictures from spacex and hubble and upload them to instagram  
+[TODO: here would be project description]
 
 ### How to install
 
