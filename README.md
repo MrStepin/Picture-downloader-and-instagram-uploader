@@ -1,8 +1,8 @@
 # Space Instagram
 
-[TODO: here would be project description]
+These scripts download pictures from spacex and hubble and upload them to instagram  
 
-### How to install
+### How to use these scripts
 
 * For using get_spacex_images insert path to folder where you want to download images ```path_to_dir =``` and then execute this in CMD  
 * For using get_hubble_images insert colection name to ```collection = ```, and then path to folder where you want to download images ```path_to_dir =``` and then execute this in CMD
