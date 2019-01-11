@@ -1,16 +1,15 @@
 import requests, os, instabot
 from os import path
 
-
 COLLECTION = "spacecraft"
 HUBBLE_COLLECTION = "http://hubblesite.org/api/v3/images/{}".format(COLLECTION)
 PATH_TO_DIR = "\\Hubble images collection {}".format(COLLECTION)
 
-def create_folder(PATH_TO_DIR):
+if __name__ == '__main__':
     if not os.path.exists(PATH_TO_DIR):
-        os.mkdir(PATH_TO_DIR)
-
-def download_images(HUBBLE_COLLECTION, PATH_TO_DIR):
+        os.makedirs(PATH_TO_DIR)
+    download_images(HUBBLE_COLLECTION, PATH_TO_DIR)
+    
     response_collection = requests.get(HUBBLE_COLLECTION)
     for image_id in response_collection.json():
         hubble_images = "http://hubblesite.org/api/v3/image/{}".format(image_id.get("id"))
@@ -26,7 +25,3 @@ def download_images(HUBBLE_COLLECTION, PATH_TO_DIR):
         with open(PATH_TO_DIR+"\\"+filename, 'wb') as picture:  
             picture.write(response_from_url_to_image.content)
         print("Image "+filename+" is downloaded!")
-
-if __name__ == '__main__':
-    create_folder(PATH_TO_DIR)
-    download_images(HUBBLE_COLLECTION, PATH_TO_DIR)

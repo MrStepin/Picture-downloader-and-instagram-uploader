@@ -4,10 +4,6 @@ from os import path
 SPACEX_URL = "https://api.spacexdata.com/v3/launches/latest"
 PATH_TO_DIR = "\\images"
 
-def create_folder(PATH_TO_DIR):
-    if not os.path.exists(PATH_TO_DIR):
-        os.mkdir(PATH_TO_DIR)
-
 def download_images(SPACEX_URL):          
     response = requests.get(SPACEX_URL)
     list_of_images = response.json().get("links").get("flickr_images")
@@ -18,5 +14,6 @@ def download_images(SPACEX_URL):
             picture.write(image_response.content)
 
 if __name__ == '__main__':
-    create_folder(PATH_TO_DIR)
+    if not os.path.exists(PATH_TO_DIR):
+        os.makedirs(PATH_TO_DIR)
     download_images(SPACEX_URL)
